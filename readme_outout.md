@@ -1,20 +1,4 @@
-// // TODO: Include packages needed for this application
-const fs = require("fs");
-
-
-// // TODO: Create an array of questions for user input
-// const questions = [];
-
-// // TODO: Create a function to write README file
-// function writeToFile(fileName, data) {}
-
-// // TODO: Create a function to initialize app
-// function init() {}
-
-// // Function call to initialize app
-// init();
-
-const myReadmeMarkdown = `# <Your-Project-Title>
+# <Your-Project-Title>
 
 ## Description
 
@@ -81,22 +65,3 @@ If you created an application or package and would like other developers to cont
 ## Tests
 
 Go the extra mile and write tests for your application. Then provide examples on how to run them here.
-`
-
-// fs.writeFile('myreadmeoutput.md', myReadmeMarkdown, (err) => {
-//     err ? console.error(err) : console.log('Success!')
-
-// })
-
-const readInFile = function(fileName) {
-fs.readFile(fileName, "utf8", (error, data) => {
-    error ? console.error(error) : console.log(data)
-
-    fs.writeFile('readme_outout.md', data, (err) =>
-    err ? console.error(err) : console.log('Success!')
-    );
-
-});
-};
-
-readInFile("readmemd.temp");
