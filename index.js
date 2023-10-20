@@ -1,10 +1,58 @@
 // // TODO: Include packages needed for this application
 const fs = require("fs");
+const inquirer = require('inquirer');
+const license = require('./utils/generateMarkdown.js')
+
 
 
 // // TODO: Create an array of questions for user input
-// const questions = [];
+const questions = [
+    "What is the Title of your README",
+    "What is "
+];
 
+const inquirer = require('inquirer');
+
+function renderLicenseBadge(license) {
+
+
+
+const badgeType = ["GPLv3", "Mozilla", "ODbL", "Perl", "MIT"]
+inquirer
+  .prompt([
+    {
+        message: "What is the Title of your README?",
+      name: "title",
+      type: "input",
+    },
+    {
+        message: "Give description of your README?",
+      name: "title",
+      type: "input",
+    },
+    {
+        message: "What is the Title of your README?",
+      name: "title",
+      type: "input",
+    },
+    {
+        message: "What is the Title of your README?",
+      name: "title",
+      type: "input",
+    },
+    {
+        name: "badgeName",
+        type: "checkbox",
+        message: "Pick a  Licensed Badge are you using",
+        choices: badgeType,
+      },
+  ])
+  .then((answer) => {
+    console.log(answer.badgeName);
+    renderLicenseLink(answer.badgeName[0]);
+  });
+
+}
 // // TODO: Create a function to write README file
 // function writeToFile(fileName, data) {}
 
@@ -83,20 +131,15 @@ If you created an application or package and would like other developers to cont
 Go the extra mile and write tests for your application. Then provide examples on how to run them here.
 `
 
-// fs.writeFile('myreadmeoutput.md', myReadmeMarkdown, (err) => {
-//     err ? console.error(err) : console.log('Success!')
 
-// })
+const askQuestions = () => {
 
-const readInFile = function(fileName) {
-fs.readFile(fileName, "utf8", (error, data) => {
-    error ? console.error(error) : console.log(data)
 
-    fs.writeFile('readme_outout.md', data, (err) =>
-    err ? console.error(err) : console.log('Success!')
-    );
+}
+const writeOutFile = function (toFilename) {
+    fs.writeFile(toFilename, myReadmeMarkdown, (err) =>
+            err ? console.error(err) : console.log('Success!')
+    )};
 
-});
-};
-
-readInFile("readmemd.temp");
+// readInFile("readmemd.temp");
+writeOutFile("NEW-README.md");

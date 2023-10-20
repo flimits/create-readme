@@ -1,3 +1,5 @@
+# No Mac Dirs
+.DS_Store/
 # Logs
 logs
 *.log
