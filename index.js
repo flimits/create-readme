@@ -6,56 +6,66 @@ const license = require('./utils/generateMarkdown.js')
 
 
 // // TODO: Create an array of questions for user input
-const questions = [
-    "What is the Title of your README",
-    "What is "
-];
-
-const inquirer = require('inquirer');
-
-function renderLicenseBadge(license) {
-
-
+// const questions = [];
 
 const badgeType = ["GPLv3", "Mozilla", "ODbL", "Perl", "MIT"]
 inquirer
-  .prompt([
-    {
-        message: "What is the Title of your README?",
-      name: "title",
-      type: "input",
-    },
-    {
-        message: "Give description of your README?",
-      name: "title",
-      type: "input",
-    },
-    {
-        message: "What is the Title of your README?",
-      name: "title",
-      type: "input",
-    },
-    {
-        message: "What is the Title of your README?",
-      name: "title",
-      type: "input",
-    },
-    {
-        name: "badgeName",
-        type: "checkbox",
-        message: "Pick a  Licensed Badge are you using",
-        choices: badgeType,
-      },
-  ])
-  .then((answer) => {
-    console.log(answer.badgeName);
-    renderLicenseLink(answer.badgeName[0]);
-  });
+    .prompt([
+        {
+            message: "What is the Title of your README?",
+            name: "title",
+            type: "input",
+        },
+        {
+            message: "Give description of your README?",
+            name: "description",
+            type: "input",
+        },
+        {
+            message: "What is your motivation for this project?",
+            name: "motivation",
+            type: "input",
+        },
+        {
+            message: "Why did you build this project?",
+            name: "theWhy",
+            type: "input",
+        },
+        {
+            message: "What does this application solve?",
+            name: "solve",
+            type: "input",
+        },
+        {
+            message: "What did you learn about the project?",
+            name: "learn",
+            type: "input",
+        },
+        {
+            message: "How do you use this application (what is its usage)?",
+            name: "testUsage",
+            type: "input",
+        },
+        {
+            name: "badgeName",
+            type: "checkbox",
+            message: "Pick a  Licensed Badge are you using.",
+            choices: badgeType,
+        },
+    ])
+    .then((answer) => {
+        // console.log(answer.badgeName);
+        // renderLicenseLink(answer.badgeName[0]);
+        console.log(answer)
+    });
 
-}
 // // TODO: Create a function to write README file
-// function writeToFile(fileName, data) {}
+function writeToFile(fileName, data) {
 
+    fs.writeFile(toFilename, myReadmeMarkdown, (err) =>
+        err ? console.error(err) : console.log('Success!')
+    )
+};
 // // TODO: Create a function to initialize app
 // function init() {}
 
@@ -131,15 +141,4 @@ If you created an application or package and would like other developers to cont
 Go the extra mile and write tests for your application. Then provide examples on how to run them here.
 `
 
-
-const askQuestions = () => {
-
-
-}
-const writeOutFile = function (toFilename) {
-    fs.writeFile(toFilename, myReadmeMarkdown, (err) =>
-            err ? console.error(err) : console.log('Success!')
-    )};
-
-// readInFile("readmemd.temp");
-writeOutFile("NEW-README.md");
+// writeToFile("NEW-README.md");
