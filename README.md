@@ -3,6 +3,8 @@ Where you can automatically genenerate a high-quality README file quickly and re
 
 ## Description and Motivation
 
+This is a node.js App that will help you create a professional README.md file.
+
 The purpose and motivation behind this appication is to give the user the ability to dynamicaly create a README file. It takes time and effort to create one from scratch, and this app "create-readme" will give them a verty good start.
 
 Create-README is designed to be run on the command line and prompt the user for questions that will help build the README page. 
@@ -19,7 +21,7 @@ The way you use this Application is:
 ## Table of Contents
 
 * [Technology Used](#technology-used)
-* [Description](#description)
+* [Repo Location](#repo)
 * [Screenshots of Application](screenshots-of-application)
 * [Learning Points](#learning-points)
 * [Code Snippets](#code-snippets)
@@ -37,209 +39,80 @@ The way you use this Application is:
 | W3Schools for JS | [https://www.w3schools.com/](https://www.w3schools.com/)
 | Dev for badges | [https://dev.to/cicirello/badges-tldr-for-your-repositorys-readme-3oo3](https://dev.to/cicirello/badges-tldr-for-your-repositorys-readme-3oo3)
 
-## Description 
+## Repo 
 
-[Visit the Deployed Site](https://github.com/flimits/create-readme)
+[GitHub Repo](https://github.com/flimits/create-readme)
 ![img](./assets/image/Banner.png)
 
-Go Nutz Donutz is your one stop shop for everything donut related!
-
-Go Nutz Donutz includes many different ways to interact with the donut community, search for the most convenient location to buy great donutz near you, buy (and sell soon enough) donut merchandise, and discover any fun donut related news you didn't know that you needed.
-
-Our site has:
-
-* Links to articles and games
-* A Donut Locator map that shows you the most popular donut shops near you
-* A Recipe Search so that you can discover popular confectionary recipes
-* Links to the most popular donut merchandise throughout the World Wide Web
-* Blogs for both consumers and sellers to post about custom donut requests!
 
 ## Screenshots of Application
+---
+### Start Of the process. Running the app:
+![img](./utils/start_the_node_app.png)
+---
+---
+### Prompting for Questions and Stating it Succeeded:
+![img](./utils/prompt_for_questions_with_success.png)
+---
+---
+### A well-rendered README Page:
+![img](./utils/wellrendered_readme_page.png)
 
-Homepage:
-![img](./assets/readme%20images/homepage.png)
-
-Donut Locator:
-![img](./assets/readme%20images/map.png)
-
-Recipes and Blogs:
-![img](./assets/readme%20images/recipes.png)
-
-Merchandise:
-![img](./assets/readme%20images/merch.png)
-
-Donut Blog:
-![img](./assets/readme%20images/blog.png)
 
 ## Learning Points 
 
+The application uses multiple technologies that we learned over the last week. Besides functions, this application now incorporates Node built in modules, and external libraries we need in order to create a simple README page. There is import/export modules, downloading and installing npm packages for the first time and running one of those packages called `inquirer` that enables prompting of a user for input to various questions you might have.
 
-A very important learning point for the whole team was implementing the use of a new CSS Framework, Materialize proved very easy and functional for the team. It had pre-constructed UI elements we ended up utilizing for basically the entirety of the project.
+There were some other things were were suppose to put in ther, but I had simply ran out of time like: constructors and prototypes, but those are currently over my head (and perhaps not required ... they will be next time!!!).
 
-Another thing learned by the team was the ability to use individual html files for seperate pages on a website. Not only did this allow for an easier spread of work delegation but also security behind branching whilst working on only one page at a time.
+Overall, it was fun, ... but also made me pull my hair out.
 
 ## Code Snippets
 ---
+### Using the require statement in node.js
+
+The fist part of the application was to learn to require packages and libraries to run it. It will not run without them.
+// Include packages needed for this application
+const fs = require("fs");
+const inquirer = require('inquirer');
 
 
-Home Page: News Letter.
-This allows us to showcase an article related to donut community. 
+---
+### Inquire Appliction pulled down from NPM
+It enables the function to prompt the user from the commands line to give input to the application and do something with it.
 
-![img](./assets/readme%20images/donus-newsletter-image.png)
+goAskTheQuestions = function () {
+    // Array of questions for user input. Used to build README.md
 
-```html
-</div>
-      <div class="row">
-        <div class="col s12 m7">
-          <div id="NL-card" class="card">
-            <div class="card-image">
-              <img id="NL-pic" src="./assets/image/NLpic.jpg">
-            </div>
-            <div class="card-content">
-              <h2>DUNKIN’® JOY IN CHILDHOOD FOUNDATION® DISTRIBUTES $4.3 MILLION IN GRANTS TO 224 ORGANIZATIONS ACROSS THE COUNTRY</h2>
-              <p id="italisize">Funding from grants will support programs that provide the simple joys of childhood to kids battling hunger or illness</p>
-              <br>
-...
-...
-              <p id="bold">These grants solidify the Dunkin’ Joy in Childhood Foundation’s commitment to bringing the simple joys of childhood to kids battling hunger or illness.</p>
-            </div>
-            <div class="card-action">
-              <a id='bold' class="white-text" href="https://news.dunkindonuts.com/news/dunkin-jicf-2023-grants">Please Check Out The Original Newsletter!</a>
-...
+    const badgeType = ["GPLv3", "Mozilla", "ODbL", "Perl", "MIT"];
+
+    inquirer
+        .prompt([
+            {
+                message: "Enter your name",
+                name: "yourName",
+                type: "input",
+            },
+            {
+                message: "Enter your Github Username",
+                name: "gitUser",
+                type: "input",
+            },
+            {
+                message: "What is the Title of your README/Application (should match repo)?",
+                name: "title",
+                type: "input",
+            },
+---
+### This bit of code is to allow us to write the the filesystem. It is the last thing the application will do.
 ```
----
----
-Search Page: With Geolocation.
+// This function is to write README file to local disk
+function writeToFile(fileName, markdownData) {
 
-```js 
-$(".btn").on("click",function(event){
-    var location = $("#textarea1").val();
-    event.preventDefault();
-    $("iframe.map").attr("src", "https://www.google.com/maps/embed/v1/search?key=AIzaSyA2Qq9tiWUtSdlkiBJov0EMgRDPTEMKJHw&zoom=7&q=donut+shops+in+" + location);
-})
-```
-![img](./assets/readme%20images/search-page-with-nav.png)
-
-```html 
-        <div id="search-bar" class="row">
-            <form class="col s12">
-              <div class="row">
-                <div class="input-field col s12">
-                  <textarea id="textarea1" class="materialize-textarea"></textarea>
-                  <label id="placeholder" for="textarea1">Explore The World of Donutz</label>
-                </div>
-              </div>
-              <button id="search-btn" class="btn waves-effect waves-light" type="submit" name="action">Search</button>
-            </form>
-          </div>     
-```
-
-Second here is how we are using Google API to search by that search parameter
-```js
-    <iframe 
-    class="map"
-    frameborder="0" 
-    style="border:0"
-    src="https://www.google.com/maps/embed/v1/search?key=AIzaSyA2Qq9tiWUtSdlkiBJov0EMgRDPTEMKJHw&zoom=7&q=donut+shops+in+United+States">
-    </iframe>
-```
----
----
-
-Some things we did for the Donut parafanalia and merchandizing using an Amazon affiliate link.
-
-![img](./assets/readme%20images/Donut-merch.png)
-
-```html
-            <div class="col s12 m4" style="margin-top: 150px;">
-                <div class="merchcard">
-                    <div class="card-image">
-                    <img src="./assets/product images/merch_hat.jpg">
-                    </div>
-                    <div class="card-content">
-                    </div>
-                    <div class="card-action">
-                    <a id="bold" class="white-text" href="https://amzn.to/3FeuqbW">Bucket Hat</a>
-                    </div>
-                </div>
-            </div>
-```
-
----
----
-
-The Donut Blog where we have merchants blog about what specials they have and Customers can request specialtiy items or needs they have and merchants can reply or take action on them.
-
-
-![img](./assets/readme%20images/blog.png)
-
-
-
-```html
-                    <div class="card-content">
-                        <div class="row">
-                            <h4 class="state-facts">Make your special requests known!!!</h4>
-                            <div class="input-field col s12">
-                                <textarea id="textarea2" class="blog-text"></textarea>
-                                <label for="textarea2">What do you need?...</label>
-                            </div>
-                            <div id="saveItC"></div>
-                        </div>
-                    </div>
-```
-And associated js...
-
-```js
-// These two are variables to repopulate and get the blog with saved values.
-var blogMCount = getItems("blogM");
-var blogCCount = getItems("blogC");
-
-// We want to check to see if anytihng is being entered by the Merchant here and
-// post it and save it
-$('#textarea1').keypress(function (e) {
-    if (e.which == 13) {
-        var prefx = "Merch";
-        var newDataMerc = $("#textarea1").val();
-        $('#saveItM').append("<p>" + prefx + blogMCount + ": " + newDataMerc + "</p>");
-        postToLocalStore("blogM", newDataMerc, blogMCount++, prefx);
-        $("#textarea1").val("");  // Clear the input field after appending
-        return false;
-    }
-})
-```
-
----
----
-
-
-Lastly in the code snippets, is  the Chart.JS for the Donut Poll.
-![img](./assets/readme%20images/donut-poll.png)
-
-```js
-
-new Chart(donutPoll, pollResults);
-
-$(".btn-large").on("click",function(){
-    window.location.reload();
-    if($(this).attr("id") === "poll-btn-donut"){
-        if(!donutData){
-        localStorage.setItem("donutData", 12);
-        localStorage.setItem("doughnutData", 2);
-        }
-        else{
-            localStorage.setItem("donutData", parseInt(donutData)+1);
-        }
-    }
-    else{
-        if(!doughnutData){
-        localStorage.setItem("doughnutData", 2);
-        localStorage.setItem("donutData", 12);
-        }
-        else{
-            localStorage.setItem("doughnutData", parseInt(doughnutData)+1)
-        }
-    }
-});
+    fs.writeFile(fileName, markdownData, (err) =>
+        err ? console.error(err) : console.log('Successfully wrote ' + fileName + ' readme file!')
+    )
+};
 ```
 
 
@@ -247,18 +120,4 @@ $(".btn-large").on("click",function(){
 
 | Name      |Email      | Github    | Portfolio |
 |-----------|-----------|-----------|-----------|
-|Anna       |           |           |           |
-|Christina  |           |           |           |
-|Jack       |jack.lcmore@gmail.com|https://github.com/JackLCmore|https://jacklcmore.github.io/portfolio/|
 |Jason       |flimits@gmail.com|https://github.com/flimits|https://github.com/flimits/my-portfolio/|
-
-
-# create-readme
-This is a node.js App that will help you create a professional README.md file.
-
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-
-# Special Thanks to the following Contributors
-
-* Digital Ocean has some great teachings.
-https://www.digitalocean.com/community/tutorials/nodejs-interactive-command-line-prompts

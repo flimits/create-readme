@@ -1,7 +1,6 @@
-// // TODO: Include packages needed for this application
+// Include packages needed for this application
 const fs = require("fs");
 const inquirer = require('inquirer');
-// const { renderLicenseLink, generateMarkdown } = require('./utils/generateMarkdown.js')
 
 goAskTheQuestions = function () {
     // Array of questions for user input. Used to build README.md
